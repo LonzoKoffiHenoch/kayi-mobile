@@ -11,7 +11,8 @@
       {
         "origin": "https://n"
       }
-    ]
+    ],
+    "expo-secure-store"
   ],
   "name": "kayi-mobile",
   "slug": "kayi-mobile"
