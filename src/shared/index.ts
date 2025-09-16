@@ -12,6 +12,10 @@ export { spacing, borderRadius, elevation, componentSpacing } from './theme/spac
 // Base Components
 export { default as Button } from './components/base/Button';
 export { default as Input } from './components/base/Input';
+
+// Modern Components (NativeWind)
+export { default as ModernButton } from './components/base/ModernButton';
+export { default as ModernInput } from './components/base/ModernInput';
 export { default as Card } from './components/base/Card';
 export { default as Modal } from './components/base/Modal';
 export { default as LoadingSpinner } from './components/base/LoadingSpinner';
@@ -151,7 +155,7 @@ export type {
   SpacingKey,
   BorderRadiusKey,
   ElevationKey,
-  TextStyleKey,
-  ColorValue
+  TextStyleKey
 } from './theme/theme';
+export type { ColorValue } from './theme/colors';
 export type { TextStyleVariant, FontFamily, FontSize } from './theme/typography';

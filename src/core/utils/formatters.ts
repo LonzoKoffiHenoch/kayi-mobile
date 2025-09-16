@@ -1,7 +1,7 @@
 import { format, formatDistanceToNow, isValid, parseISO } from 'date-fns';
 import { fr, enUS } from 'date-fns/locale';
 import { CI_CONSTANTS } from '../../config/constants';
-import { Commune } from '../../types/common.types';
+import { Commune } from '../types/common.types';
 import { formatCIPhone } from './validators';
 
 // Locale mapping

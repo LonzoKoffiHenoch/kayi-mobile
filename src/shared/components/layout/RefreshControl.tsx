@@ -23,7 +23,7 @@ import { theme } from '../../theme/theme';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
-export interface RefreshControlProps extends Omit<RNRefreshControlProps, 'refreshing' | 'onRefresh'> {
+export interface RefreshControlProps extends Omit<RNRefreshControlProps, 'refreshing' | 'onRefresh' | 'size'> {
   refreshing: boolean;
   onRefresh: () => Promise<void> | void;
   title?: string;
@@ -85,7 +85,6 @@ const RefreshControl: React.FC<RefreshControlProps> = React.memo(({
       tintColor={colors[0]} // iOS
       title={title} // iOS
       titleColor={theme.colors.text.secondary} // iOS
-      size={size} // Android
       progressBackgroundColor={theme.colors.surface.primary} // Android
       {...props}
     />
@@ -187,7 +186,7 @@ export const RefreshableFlatList = <T extends any>({
     <FlatList
       data={data}
       refreshControl={refreshControl}
-      ListEmptyComponent={refreshing && loadingComponent ? loadingComponent : (ListEmptyComponent || defaultEmptyComponent)}
+      ListEmptyComponent={refreshing && loadingComponent ? () => <>{loadingComponent}</> : (ListEmptyComponent || (() => defaultEmptyComponent))}
       showsVerticalScrollIndicator={false}
       {...flatListProps}
     />
@@ -245,7 +244,7 @@ export const RefreshableSectionList = <T extends any, S extends any>({
     <SectionList
       sections={sections}
       refreshControl={refreshControl}
-      ListEmptyComponent={refreshing && loadingComponent ? loadingComponent : (ListEmptyComponent || defaultEmptyComponent)}
+      ListEmptyComponent={refreshing && loadingComponent ? () => <>{loadingComponent}</> : (ListEmptyComponent || (() => defaultEmptyComponent))}
       showsVerticalScrollIndicator={false}
       {...sectionListProps}
     />

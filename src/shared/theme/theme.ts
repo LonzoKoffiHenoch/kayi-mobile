@@ -4,7 +4,7 @@
  */
 
 import { colors, semanticColors } from './colors';
-import { textStyles, fontFamily, fontSize, lineHeight, letterSpacing } from './typography';
+import { textStyles, fontFamily, fontSize, lineHeight, letterSpacing, fontWeight } from './typography';
 import { spacing, borderRadius, elevation, componentSpacing, layout } from './spacing';
 
 // Main theme object
@@ -20,6 +20,7 @@ export const theme = {
     fontSize,
     lineHeight,
     letterSpacing,
+    fontWeight,
   },
 
   // Spacing system

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, ReactNode, useState, useEffect } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { useColorScheme } from 'react-native';
-import { STORAGE_KEYS } from '../config/constants';
+import { STORAGE_KEYS } from '../../config/constants';
 
 type ThemeMode = 'light' | 'dark' | 'system';
 

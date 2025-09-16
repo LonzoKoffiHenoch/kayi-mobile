@@ -105,7 +105,7 @@ const Input: React.FC<InputProps> = React.memo(({
     sizeStyles.container,
     stateStyles.container,
     containerStyle,
-  ];
+  ].filter(Boolean);
 
   const textInputStyles: TextStyle[] = [
     styles.input,
@@ -113,7 +113,7 @@ const Input: React.FC<InputProps> = React.memo(({
     sizeStyles.input,
     stateStyles.input,
     inputStyle,
-  ];
+  ].filter(Boolean);
 
   const animatedLabelStyle = {
     ...styles.label,

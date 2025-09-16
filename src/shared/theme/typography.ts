@@ -9,23 +9,23 @@ import { Platform } from 'react-native';
 // Font Family Configuration
 export const fontFamily = {
   regular: Platform.select({
-    ios: 'Poppins-Regular',
-    android: 'Poppins-Regular',
+    ios: 'System',
+    android: 'Roboto',
     default: 'System',
   }),
   medium: Platform.select({
-    ios: 'Poppins-Medium',
-    android: 'Poppins-Medium',
+    ios: 'System',
+    android: 'Roboto_medium',
     default: 'System',
   }),
   semiBold: Platform.select({
-    ios: 'Poppins-SemiBold',
-    android: 'Poppins-SemiBold',
+    ios: 'System',
+    android: 'Roboto_medium',
     default: 'System',
   }),
   bold: Platform.select({
-    ios: 'Poppins-Bold',
-    android: 'Poppins-Bold',
+    ios: 'System',
+    android: 'Roboto_bold',
     default: 'System',
   }),
 } as const;
@@ -43,6 +43,7 @@ export const fontSize = {
   xs: 12,
   sm: 14,
   base: 16,
+  md: 16,    // Added missing md
   lg: 18,
   xl: 20,
   '2xl': 24,
@@ -55,6 +56,7 @@ export const lineHeight = {
   xs: 16,    // 1.33 ratio
   sm: 20,    // 1.43 ratio
   base: 24,  // 1.5 ratio
+  md: 24,    // Added missing md - 1.5 ratio
   lg: 28,    // 1.56 ratio
   xl: 28,    // 1.4 ratio
   '2xl': 32, // 1.33 ratio
@@ -108,6 +110,15 @@ export const textStyles = {
   h4: {
     fontSize: fontSize.lg,
     lineHeight: lineHeight.lg,
+    fontFamily: fontFamily.medium,
+    fontWeight: fontWeight.medium,
+    letterSpacing: letterSpacing.normal,
+  },
+
+  // Subtitle
+  subtitle: {
+    fontSize: fontSize.md,
+    lineHeight: lineHeight.md,
     fontFamily: fontFamily.medium,
     fontWeight: fontWeight.medium,
     letterSpacing: letterSpacing.normal,
@@ -213,11 +224,12 @@ export const getTextStyle = (variant: keyof typeof textStyles) => {
 };
 
 // Font loading configuration (for Expo)
+// TODO: Add Poppins font files to assets/fonts/ directory
 export const fontConfig = {
-  'Poppins-Regular': require('../../../assets/fonts/Poppins-Regular.ttf'),
-  'Poppins-Medium': require('../../../assets/fonts/Poppins-Medium.ttf'),
-  'Poppins-SemiBold': require('../../../assets/fonts/Poppins-SemiBold.ttf'),
-  'Poppins-Bold': require('../../../assets/fonts/Poppins-Bold.ttf'),
+  // 'Poppins-Regular': require('../../../assets/fonts/Poppins-Regular.ttf'),
+  // 'Poppins-Medium': require('../../../assets/fonts/Poppins-Medium.ttf'),
+  // 'Poppins-SemiBold': require('../../../assets/fonts/Poppins-SemiBold.ttf'),
+  // 'Poppins-Bold': require('../../../assets/fonts/Poppins-Bold.ttf'),
 };
 
 // Text transform utilities
