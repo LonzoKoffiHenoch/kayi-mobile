@@ -134,6 +134,10 @@ export const colors = {
     link: '#3B82F6',        // info-500
   },
 
+  // Common colors
+  white: '#FFFFFF',
+  black: '#000000',
+
   // Border Colors
   border: {
     primary: '#E5E7EB',     // gray-200

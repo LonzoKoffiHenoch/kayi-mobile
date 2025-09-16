@@ -22,6 +22,9 @@ interface EnvConfig {
   OFFLINE_MODE_ENABLED: boolean;
   ANALYTICS_ENABLED: boolean;
   CRASHLYTICS_ENABLED: boolean;
+  
+  // Development flags
+  MOCK_AUTH_ENABLED: boolean;
 }
 
 const createConfig = (): EnvConfig => {
@@ -29,7 +32,7 @@ const createConfig = (): EnvConfig => {
   const manifest = Constants.manifest2 ?? Constants.manifest;
   
   return {
-    API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL || 'http://localhost:3000/api',
+    API_BASE_URL: process.env.EXPO_PUBLIC_API_BASE_URL || 'http://192.168.100.90:3002',
     API_TIMEOUT: parseInt(process.env.EXPO_PUBLIC_API_TIMEOUT || '30000', 10),
     APP_NAME: process.env.EXPO_PUBLIC_APP_NAME || 'KAYI House',
     APP_VERSION: process.env.EXPO_PUBLIC_APP_VERSION || '1.0.0',
@@ -50,6 +53,9 @@ const createConfig = (): EnvConfig => {
     OFFLINE_MODE_ENABLED: process.env.EXPO_PUBLIC_OFFLINE_MODE_ENABLED === 'true',
     ANALYTICS_ENABLED: process.env.EXPO_PUBLIC_ANALYTICS_ENABLED === 'true',
     CRASHLYTICS_ENABLED: process.env.EXPO_PUBLIC_CRASHLYTICS_ENABLED === 'true',
+    
+    // Development flags
+    MOCK_AUTH_ENABLED: process.env.EXPO_PUBLIC_MOCK_AUTH_ENABLED === 'true' || __DEV__,
   };
 };
 

@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { CI_CONSTANTS } from '../../config/constants';
-import { ValidationResult, FormError } from '../../types/common.types';
+import { ValidationResult, FormError } from '../types/common.types';
 
 // Types pour validation result
 export interface ValidationOptions {

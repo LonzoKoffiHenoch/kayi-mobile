@@ -6,7 +6,7 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Platform, Alert, Linking } from 'react-native';
 import * as Location from 'expo-location';
-import * as Camera from 'expo-camera';
+import { Camera } from 'expo-camera';
 import * as MediaLibrary from 'expo-media-library';
 import { PermissionStatus } from 'expo-modules-core';
 

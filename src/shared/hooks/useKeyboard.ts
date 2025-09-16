@@ -59,8 +59,8 @@ const useKeyboard = (options: UseKeyboardOptions = {}): UseKeyboardReturn => {
   const screenHeight = Dimensions.get('window').height;
   const availableHeight = screenHeight - keyboardState.height;
 
-  const animationTimeoutRef = useRef<NodeJS.Timeout>();
-  const throttleTimeoutRef = useRef<NodeJS.Timeout>();
+  const animationTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const throttleTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Throttled state update
   const updateKeyboardState = useCallback((newState: Partial<KeyboardState>) => {
@@ -92,7 +92,9 @@ const useKeyboard = (options: UseKeyboardOptions = {}): UseKeyboardReturn => {
 
   // Keyboard event handlers
   const handleKeyboardWillShow = useCallback((event: KeyboardEvent) => {
-    const { height, duration, easing } = event.endCoordinates;
+    const { height } = event.endCoordinates;
+    const duration = (event as any).duration || 250;
+    const easing = (event as any).easing || 'easeInEaseOut';
     
     setKeyboardWillShow(true);
     handleAnimationStart(duration);
@@ -101,14 +103,16 @@ const useKeyboard = (options: UseKeyboardOptions = {}): UseKeyboardReturn => {
       isVisible: true,
       height,
       duration,
-      easing: easing || 'easeInEaseOut',
+      easing,
     });
 
     onWillShow?.(event);
   }, [updateKeyboardState, handleAnimationStart, onWillShow]);
 
   const handleKeyboardDidShow = useCallback((event: KeyboardEvent) => {
-    const { height, duration, easing } = event.endCoordinates;
+    const { height } = event.endCoordinates;
+    const duration = (event as any).duration || 250;
+    const easing = (event as any).easing || 'easeInEaseOut';
     
     setKeyboardDidShow(true);
     setKeyboardWillShow(false);
@@ -117,14 +121,15 @@ const useKeyboard = (options: UseKeyboardOptions = {}): UseKeyboardReturn => {
       isVisible: true,
       height,
       duration,
-      easing: easing || 'easeInEaseOut',
+      easing,
     });
 
     onShow?.(event);
   }, [updateKeyboardState, onShow]);
 
   const handleKeyboardWillHide = useCallback((event: KeyboardEvent) => {
-    const { duration, easing } = event.endCoordinates;
+    const duration = (event as any).duration || 250;
+    const easing = (event as any).easing || 'easeInEaseOut';
     
     setKeyboardWillShow(false);
     handleAnimationStart(duration);
@@ -133,21 +138,24 @@ const useKeyboard = (options: UseKeyboardOptions = {}): UseKeyboardReturn => {
       isVisible: false,
       height: 0,
       duration,
-      easing: easing || 'easeInEaseOut',
+      easing,
     });
 
     onWillHide?.(event);
   }, [updateKeyboardState, handleAnimationStart, onWillHide]);
 
   const handleKeyboardDidHide = useCallback((event: KeyboardEvent) => {
+    const duration = (event as any).duration || 250;
+    const easing = (event as any).easing || 'easeInEaseOut';
+    
     setKeyboardDidShow(false);
     setKeyboardWillShow(false);
     
     updateKeyboardState({
       isVisible: false,
       height: 0,
-      duration: event.endCoordinates.duration,
-      easing: event.endCoordinates.easing || 'easeInEaseOut',
+      duration,
+      easing,
     });
 
     onHide?.(event);

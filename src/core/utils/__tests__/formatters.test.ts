@@ -16,7 +16,7 @@ import {
   truncateText,
   formatOrdinal,
 } from '../formatters';
-import { Commune } from '../../../types/common.types';
+import { Commune } from '../../types/common.types';
 
 describe('Currency Formatters', () => {
   test('should format FCFA currency correctly', () => {

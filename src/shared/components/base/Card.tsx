@@ -40,14 +40,14 @@ const Card: React.FC<CardProps> = React.memo(({
   const variantStyles = getVariantStyles(variant);
   const isPressable = Boolean(onPress && !disabled);
 
-  const cardStyle: ViewStyle[] = [
+  const cardStyle = [
     styles.base,
     variantStyles,
     borderRadius !== undefined && { borderRadius },
     padding !== undefined && { padding },
     disabled && styles.disabled,
     style,
-  ];
+  ].filter(Boolean);
 
   const content = (
     <View style={[styles.content, contentStyle]}>

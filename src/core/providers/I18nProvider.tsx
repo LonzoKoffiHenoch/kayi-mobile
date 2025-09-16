@@ -5,7 +5,7 @@ import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import { SupportedLanguage } from '../types/common.types';
-import { STORAGE_KEYS, CI_CONSTANTS } from '../config/constants';
+import { STORAGE_KEYS, CI_CONSTANTS } from '../../config/constants';
 
 // Ressources de traduction (exemple)
 const resources = {

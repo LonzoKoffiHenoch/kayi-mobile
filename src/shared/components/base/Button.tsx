@@ -67,22 +67,22 @@ const Button: React.FC<ButtonProps> = React.memo(({
   const variantStyles = getVariantStyles(variant, disabled);
   const sizeStyles = getSizeStyles(size);
   
-  const buttonStyle: ViewStyle = [
+  const buttonStyle = [
     styles.base,
     variantStyles.container,
     sizeStyles.container,
     fullWidth && styles.fullWidth,
     disabled && styles.disabled,
     style,
-  ];
+  ].filter(Boolean);
 
-  const textStyles: TextStyle = [
+  const textStyles = [
     styles.text,
     variantStyles.text,
     sizeStyles.text,
     disabled && styles.disabledText,
     textStyle,
-  ];
+  ].filter(Boolean);
 
   const iconSize = getIconSize(size);
   const iconColor = variantStyles.text.color;

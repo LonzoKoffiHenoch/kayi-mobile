@@ -4,6 +4,7 @@ import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
 
 import { STORAGE_KEYS } from '../src/config/constants';
+import { TestNativeWind } from '../src/components/TestNativeWind';
 
 export default function RootScreen() {
   useEffect(() => {
@@ -33,10 +34,21 @@ export default function RootScreen() {
       }
     } catch (error) {
       console.error('Error checking auth status:', error);
-      // En cas d'erreur, rediriger vers l'écran de bienvenue
-      router.replace('/(auth)/welcome');
+      // En cas d'erreur, attendre plus longtemps puis rediriger vers login simple
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      try {
+        router.replace('/(auth)/login');
+      } catch (routerError) {
+        console.error('Router error:', routerError);
+        // Si même le router échoue, rester sur cette page 
+      }
     }
   };
+
+  // Test temporaire pour NativeWind
+  if (__DEV__) {
+    return <TestNativeWind />;
+  }
 
   return (
     <View style={styles.container}>

@@ -37,11 +37,11 @@ const SafeContainer: React.FC<SafeContainerProps> = React.memo(({
 }) => {
   const insets = useSafeAreaInsets();
 
-  const containerStyle: ViewStyle[] = [
+  const containerStyle = [
     styles.container,
     { backgroundColor },
     style,
-  ];
+  ].filter(Boolean);
 
   // Custom safe area implementation if needed
   const customSafeAreaStyle: ViewStyle = {
@@ -78,14 +78,14 @@ export const SafeAreaContainer: React.FC<SafeContainerProps> = React.memo(({
   statusBarBackgroundColor,
   translucent = false,
 }) => {
-  const containerStyle: ViewStyle[] = [
+  const containerStyle = [
     styles.container,
     { backgroundColor },
     style,
-  ];
+  ].filter(Boolean);
 
   return (
-    <SafeAreaView style={containerStyle} edges={edges}>
+    <SafeAreaView style={containerStyle} edges={edges as Edge[]}>
       {/* Status Bar Configuration */}
       {!disableStatusBar && (
         <StatusBar

@@ -1,3 +1,4 @@
+import '../global.css';
 import { useEffect } from 'react';
 import { SplashScreen, Stack } from 'expo-router';
 import { useFonts } from 'expo-font';
@@ -6,7 +7,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Toast from 'react-native-toast-message';
 
-import { AppProviders } from '../src/providers/AppProviders';
+import { AppProviders } from '../src/core/providers/AppProviders';
 import { ENV } from '../src/config/env';
 
 // Empêcher le splash screen de se cacher automatiquement
@@ -54,9 +55,6 @@ export default function RootLayout() {
           >
             <Stack.Screen name="(auth)" options={{ headerShown: false }} />
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            <Stack.Screen name="property" options={{ headerShown: false }} />
-            <Stack.Screen name="mobile-money" options={{ headerShown: false }} />
-            <Stack.Screen name="flex-rent" options={{ headerShown: false }} />
             <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
           </Stack>
           
