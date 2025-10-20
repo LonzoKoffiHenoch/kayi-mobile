@@ -4,7 +4,7 @@ export { env } from './config/env';
 export * from './config/constants';
 
 // Storage
-export { mmkvStorage } from './storage/mmkvStorage';
+export { asyncStorage } from './storage/asyncStorage';
 export { secureStorage } from './storage/secureStorage';
 
 // API
